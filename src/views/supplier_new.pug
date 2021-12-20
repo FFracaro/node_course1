@@ -1,0 +1,53 @@
+extends ./main
+
+block content 
+	.container.form-align-top.col-md-4
+		h1.title-align-center Cadastro de novo fornecedor
+		form(action="#", method="post")
+			.form-group
+				label(for='nomeCliente') Nome fantasia
+				input.form-control(
+					type="text",
+					name="fornecedor",
+					id="fornecedor",
+					placeholder="Entre com seu nome fantasia"
+					required
+				)
+			.form-group
+				label(for='cnpjFornecedor') CNPJ
+				input.form-control(
+					type="text",
+					name="cnpj",
+					id="cnpj",
+					placeholder="Digite o CNPJ",
+					required
+				)
+			.form-group
+				label(for='emailFornecedor') E-mail
+				input.form-control(
+					type="text",
+					name="email",
+					id="email",
+					placeholder="Digite o email",
+					required
+				)
+			.form-group
+				label(for='telefoneFornecedor') Telefone fixo
+				input.form-control(
+					type="text",
+					name="telefone",
+					id="telefone",
+					placeholder="Digite o número do telefone",
+					required
+				)
+			.form-group
+				label(for='movelFornecedor') Telefone Móvel
+				input.form-control(
+					type="text",
+					name="celular",
+					id="celular",
+					placeholder="Digite o número do móvel",
+					required
+				)
+			.form-group
+				button.btn.btn-sucess.col-md-12(type="submit") Cadastrar

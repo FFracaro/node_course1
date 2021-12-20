@@ -1,0 +1,53 @@
+extends ./main
+
+block content 
+	.container.form-align-top.col-md-4
+		h1.title-align-center Cadastro de novo cliente
+		form(action="#", method="post")
+			.form-group
+				label(for='nomeCliente') Nome
+				input.form-control(
+					type="text",
+					name="cliente",
+					id="client",
+					placeholder="Entre com seu nome"
+					required
+				)
+			.form-group
+				label(for='cpfCliente') CPF
+				input.form-control(
+					type="text",
+					name="cpf",
+					id="cpf",
+					placeholder="Digite o CPF",
+					required
+				)
+			.form-group
+				label(for='emailCliente') E-mail
+				input.form-control(
+					type="text",
+					name="email",
+					id="email",
+					placeholder="Digite o email",
+					required
+				)
+			.form-group
+				label(for='telefoneCliente') Telefone fixo
+				input.form-control(
+					type="text",
+					name="telefone",
+					id="telefone",
+					placeholder="Digite o número do telefone",
+					required
+				)
+			.form-group
+				label(for='movelClient') Telefone Móvel
+				input.form-control(
+					type="text",
+					name="celular",
+					id="celular",
+					placeholder="Digite o número do móvel",
+					required
+				)
+			.form-group
+				button.btn.btn-sucess.col-md-12(type="submit") Cadastrar
