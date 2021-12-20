@@ -20,6 +20,8 @@ app.use('/assets', express.static(__dirname + '/assets'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended : false }))
 
+require('./model/index')
+
 // Rotas 
 app.use('/', router);
 app.use('/client', client);
