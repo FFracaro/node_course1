@@ -1,20 +1,17 @@
 let express = require('express')
 let router = express.Router()
-let find = require('./../controller/find')
-let create = require('./../controller/create')
-let update = require('./../controller/update')
-let remove = require('./../controller/remove')
+let clientController = require('./../controller/clientController')
 
-router.get('/', find)
+router.get('/', clientController.list)
 
 router.get('/new', (req, res) => {
     res.render('client_new')
 })
 
-router.post('/', create)
+router.post('/', clientController.create)
 
-router.put('/:id', update)
+router.put('/:id', clientController.update)
 
-router.delete('/:id', remove)
+router.delete('/:id', clientController.delete)
 
 module.exports = router;

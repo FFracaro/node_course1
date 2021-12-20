@@ -2,7 +2,7 @@ extends ./main
 
 block content
 	.container.table-align-top 
-		h1.title-align-center Lista de clientes
+		h1.title-align-center #{title}
 		table.table.table-bordered 
 			thead 
 				tr 
@@ -13,30 +13,16 @@ block content
 					th Telefone Móvel 
 					th Ações 
 			tbody 
-				tr 
-					td Client1 
-					td 12546302120
-					td client@client.group
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
-				tr 
-					td Client2
-					td 12546302120
-					td client@client.group
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
-				tr 
-					td Client3
-					td 12546302120
-					td client@client.group
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
+				each client in clients 
+					tr 
+						td= client.cliente 
+						td= client.cpf 
+						td= client.email 
+						td= client.telefonefixo 
+						td= client.telefonemovel 
+						td 
+							a(href="#", class="btn btn-info") Editar
+							form(method="POST",
+								action="/client")
+								input(type="hidden", name="_method", value="DELETE")
+								button.btn.btn-danger(type="submit") Deletar
