@@ -3,6 +3,19 @@ extends ./main
 block content
 	.container.table-align-top 
 		h1.title-align-center #{title}
+		case msg
+			when '1'
+				div.alert.alert-success Cliente cadastrado com sucesso.
+			when '2'
+				div.alert.alert-danger Não foi possível cadastrar o cliente.
+			when '3'
+				div.alert.alert-success Cliente editado com sucesso.
+			when '4'
+				div.alert.alert-danger Não foi possível editar o cliente.
+			when '5'
+				div.alert.alert-success Cliente excluído com sucesso.
+			when '6'
+				div.alert.alert-danger Não foi possível excluir o cliente.
 		table.table.table-bordered 
 			thead 
 				tr 
@@ -21,8 +34,8 @@ block content
 						td= client.telefonefixo 
 						td= client.telefonemovel 
 						td 
-							a(href="#", class="btn btn-info") Editar
+							a(href="/client/edit/" + client.id, class="btn btn-info") Editar
 							form(method="POST",
-								action="/client")
-								input(type="hidden", name="_method", value="DELETE")
+								action="/client/" + client.id + "?_method=DELETE",
+								style ="display:inline-block")
 								button.btn.btn-danger(type="submit") Deletar

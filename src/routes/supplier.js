@@ -1,20 +1,19 @@
 let express = require('express')
 let router = express.Router()
-let find = require('./../controller/find')
-let create = require('./../controller/create')
-let remove = require('./../controller/remove')
-let update = require('./../controller/update')
+let supplierController = require('./../controller/supplierController')
 
-router.get('/', find)
+router.get('/', supplierController.list)
 
 router.get('/new', (req, res) => {
     res.render('supplier_new')
 })
 
-router.post('/', create)
+router.get('/edit/:id', supplierController.edit)
 
-router.put('/:id', update)
+router.post('/', supplierController.create)
 
-router.delete('/:id', remove)
+router.put('/:id', supplierController.update)
+
+router.delete('/:id', supplierController.delete)
 
 module.exports = router;

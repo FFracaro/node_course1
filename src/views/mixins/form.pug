@@ -1,0 +1,53 @@
+mixin form(client)
+    .form-group
+        label(for='nomeCliente') Nome
+        input.form-control(
+            type="text",
+            name="cliente",
+            id="cliente",
+            placeholder="Entre com seu nome"
+            required,
+            value=(!client) ? "":client.cliente
+        )
+    .form-group
+        label(for='cpfCliente') CPF
+        input.form-control(
+            type="text",
+            name="cpf",
+            id="cpf",
+            placeholder="Digite o CPF",
+            required,
+            value=(!client) ? "":client.cpf
+        )
+    .form-group
+        label(for='emailCliente') E-mail
+        input.form-control(
+            type="text",
+            name="email",
+            id="email",
+            placeholder="Digite o email",
+            required,
+            value=(!client) ? "":client.email
+        )
+    .form-group
+        label(for='telefoneCliente') Telefone fixo
+        input.form-control(
+            type="text",
+            name="telefonefixo",
+            id="telefonefixo",
+            placeholder="Digite o número do telefone",
+            required,
+            value=(!client) ? "":client.telefonefixo
+        )
+    .form-group
+        label(for='movelClient') Telefone Móvel
+        input.form-control(
+            type="text",
+            name="telefonemovel",
+            id="telefonemovel",
+            placeholder="Digite o número do móvel",
+            required,
+            value=(!client) ? "":client.telefonemovel
+        )
+    .form-group
+        button.btn.btn-sucess.col-md-12(type="submit") Cadastrar

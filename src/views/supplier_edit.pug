@@ -1,0 +1,8 @@
+extends ./main
+include ./mixins/supplier_form
+
+block content 
+	.container.form-align-top.col-md-4
+		h1.title-align-center Editar informações do fornecedor
+		form(action="/supplier/" + supplier.id + "?_method=PUT", method="POST")
+			+form(supplier)

@@ -8,6 +8,8 @@ router.get('/new', (req, res) => {
     res.render('client_new')
 })
 
+router.get('/edit/:id', clientController.edit)
+
 router.post('/', clientController.create)
 
 router.put('/:id', clientController.update)

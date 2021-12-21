@@ -10,7 +10,8 @@ module.exports = {
         .then((clients) => {
             return res.render('client_list', {
                 title: "Lista de Clientes",
-                clients: clients
+                clients: clients,
+                msg: req.query.msg
             })
         })
         .catch((err) => {
@@ -21,7 +22,8 @@ module.exports = {
     {
         await Cliente
         .create(req.body)
-        .then(() => console.log('INSERTED CLIENT'))        
+        .then(() => res.redirect('/client?msg=1'))
+        .catch((err) => res.redirect('/client?msg=2'))        
     },
     async update(req, res)
     {
@@ -31,7 +33,8 @@ module.exports = {
                 id: req.params.id
             }
         })
-        .then(() => console.log("UPDATED CLIENT."))
+        .then(() => res.redirect('/client?msg=3'))
+        .catch((err) => res.redirect('/client?msg=4'))  
     },
     async delete(req, res)
     {
@@ -41,9 +44,17 @@ module.exports = {
                 id: req.params.id
             }
         })
-        .then(() => console.log('DELETED CLIENT.'))
-        .catch((err) => {
-            console.log(err)
+        .then(() => res.redirect('/client?msg=5'))
+        .catch((err) => res.redirect('/client?msg=6'))  
+    },
+    async edit(req, res)
+    {
+        await Cliente
+        .findByPk(req.params.id)
+        .then((client) => {
+            return res.render('client_edit', {
+                client: client
+            })
         })
     }
 } 

@@ -1,0 +1,53 @@
+mixin form(supplier)
+    .form-group
+        label(for='nomeCliente') Nome fantasia
+        input.form-control(
+            type="text",
+            name="nomefantasia",
+            id="nomefantasia",
+            placeholder="Entre com seu nome fantasia"
+            required,
+            value=(!supplier) ? "" : supplier.nomefantasia
+        )
+    .form-group
+        label(for='cnpjFornecedor') CNPJ
+        input.form-control(
+            type="text",
+            name="cnpj",
+            id="cnpj",
+            placeholder="Digite o CNPJ",
+            required,
+            value=(!supplier) ? "" : supplier.cnpj
+        )
+    .form-group
+        label(for='emailFornecedor') E-mail
+        input.form-control(
+            type="text",
+            name="email",
+            id="email",
+            placeholder="Digite o email",
+            required,
+            value=(!supplier) ? "" : supplier.email
+        )
+    .form-group
+        label(for='telefoneFornecedor') Telefone fixo
+        input.form-control(
+            type="text",
+            name="telefonefixo",
+            id="telefonefixo",
+            placeholder="Digite o número do telefone",
+            required,
+            value=(!supplier) ? "" : supplier.telefonefixo
+        )
+    .form-group
+        label(for='movelFornecedor') Telefone Móvel
+        input.form-control(
+            type="text",
+            name="telefonemovel",
+            id="telefonemovel",
+            placeholder="Digite o número do móvel",
+            required,
+            value=(!supplier) ? "" : supplier.telefonemovel
+        )
+    .form-group
+        button.btn.btn-sucess.col-md-12(type="submit") Cadastrar

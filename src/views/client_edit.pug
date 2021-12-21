@@ -1,0 +1,8 @@
+extends ./main
+include ./mixins/form
+
+block content 
+	.container.form-align-top.col-md-4
+		h1.title-align-center Editar informações do cliente
+		form(action="/client/" + client.id + "?_method=PUT", method="POST")
+			+form(client)

@@ -2,7 +2,20 @@ extends ./main
 
 block content
 	.container.table-align-top 
-		h1.title-align-center Lista de fornecedores
+		h1.title-align-center #{title}
+		case msg
+			when '1'
+				div.alert.alert-success Fornecedor cadastrado com sucesso.
+			when '2'
+				div.alert.alert-danger Não foi possível cadastrar o fornecedor.
+			when '3'
+				div.alert.alert-success Fornecedor editado com sucesso.
+			when '4'
+				div.alert.alert-danger Não foi possível editar o fornecedor.
+			when '5'
+				div.alert.alert-success FOrnecedor excluído com sucesso.
+			when '6'
+				div.alert.alert-danger Não foi possível excluir o fornecedor.
 		table.table.table-bordered 
 			thead 
 				tr 
@@ -13,30 +26,16 @@ block content
 					th Telefone Móvel 
 					th Ações 
 			tbody 
-				tr 
-					td AAAAAA 
-					td 12546302120
-					td fornecedor@a.b
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
-				tr 
-					td BBBBBB
-					td 12546302120
-					td fornecedor@a.b
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
-				tr 
-					td CCCCCCCC
-					td 12546302120
-					td fornecedor@a.b
-					td (45)58964512
-					td (48)999999999
-					td
-						button.btn.btn-success(type='button') Editar 
-						button.btn.btn-danger(type='button') Remover
+				each supplier in suppliers
+					tr 
+						td= supplier.nomefantasia
+						td= supplier.cnpj
+						td= supplier.email 
+						td= supplier.telefonefixo 
+						td= supplier.telefonemovel 
+						td 
+							a(href="/supplier/edit/" + supplier.id, class="btn btn-info") Editar
+							form(method="POST",
+								action="/supplier/" + supplier.id + "?_method=DELETE",
+								style ="display:inline-block")
+								button.btn.btn-danger(type="submit") Deletar
