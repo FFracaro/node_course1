@@ -1,19 +1,20 @@
 let express = require('express')
 let router = express.Router()
 let supplierController = require('./../controller/supplierController')
+let supplierValidator = require('./../validation/supplierValidation')
 
-router.get('/', supplierController.list)
+router.get('/', supplierController.findAllSuppliers)
 
 router.get('/new', (req, res) => {
     res.render('supplier_new')
 })
 
-router.get('/edit/:id', supplierController.edit)
+router.get('/edit/:id', supplierValidator.validateId, supplierController.findSupplierByID)
 
-router.post('/', supplierController.create)
+router.post('/', supplierValidator.validateSupplier, supplierController.createSupplier)
 
-router.put('/:id', supplierController.update)
+router.put('/:id', supplierValidator.validateSupplier, supplierController.updateSupplier)
 
-router.delete('/:id', supplierController.delete)
+router.delete('/:id', supplierValidator.validateId, supplierController.deleteSupplier)
 
 module.exports = router;

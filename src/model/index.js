@@ -1,6 +1,8 @@
+const {DB} = require('./../config')
 const Seq = require('sequelize')
+
 const Sequelize = new Seq(
-    'mysql://root:myrootsql@10.7.0.3/crud_node', {
+    DB, {
         operatorAliases: Seq.Op
     })
 

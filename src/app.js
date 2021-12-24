@@ -1,12 +1,12 @@
 const path = require('path')
 const bodyParser = require('body-parser')
 const express = require('express')
+const {PORT} = require('./config')
 const router = require('./routes/home')
 const client = require('./routes/client')
 const supplier = require('./routes/supplier')
 const methodOverride = require('method-override')
 const app = express()
-const port = 3000
 
 // PUG vai abstrair o html - ver home.pug
 // npm install pug --save
@@ -29,4 +29,4 @@ app.use('/client', client);
 app.use('/supplier', supplier)
 
 // Template literal, não utiizar aspas simples porém acento
-app.listen(port, () => console.log(`App listening to http://localhost:${port}`))
+app.listen(PORT, () => console.log(`App listening to http://localhost:${PORT}`))

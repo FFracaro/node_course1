@@ -1,4 +1,4 @@
-// modulo que não devem ir para produção:
+// modulos que não devem ir para produção:
 // npm install <modulo> --save-dev
 // para produção
 // npm install <modulo> --save
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended : false }))
 
 // request. response e callback
 // se tudo estiver correto no middleware
-// prosegue para o callback
+// prossegue para o callback
 // tem de ser executado antes da rota
 /* app.use((req, res, next) => {
     console.log('Middleware executado com sucesso.')
