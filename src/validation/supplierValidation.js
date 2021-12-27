@@ -2,11 +2,13 @@ const { check } = require('express-validator');
 const expressValidator = require('express-validator')
 
 exports.validateSupplier = [
-    check('nomefantasia').exists( { checkFalsy : true } ).isAlpha(),
+    check('nomefantasia').exists( { checkFalsy : true } ),
     check('cnpj').exists( { checkFalsy : true } ).isNumeric().isLength( { min : 14, max : 14 } ),
     check('email').exists( { checkFalsy : true } ).normalizeEmail().isEmail(),
     check('telefonefixo').exists( { checkFalsy : true } ).isNumeric().isLength( { min: 8, max: 15} ),
     check('telefonemovel').exists( { checkFalsy : true } ).isNumeric().isLength( { min: 8, max: 15} ),
+    check('cep').exists( {checkFalsy : true} ).isNumeric().isLength( { min: 8, max: 8 } ),
+    check('complemento').exists( {checkFalsy : true} ),
     (req, res, next) => {
         const errors = expressValidator.validationResult(req)
         if (!errors.isEmpty()) {

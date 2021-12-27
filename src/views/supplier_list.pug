@@ -24,6 +24,8 @@ block content
 					th E-mail 
 					th Telefone Fixo 
 					th Telefone Móvel 
+					th CEP 
+					th Complemento
 					th Ações 
 			tbody 
 				each supplier in suppliers
@@ -33,6 +35,8 @@ block content
 						td= supplier.email 
 						td= supplier.telefonefixo 
 						td= supplier.telefonemovel 
+						td= supplier.address.cep 
+						td= supplier.address.complemento
 						td 
 							a(href="/supplier/edit/" + supplier.id, class="btn btn-info") Editar
 							form(method="POST",

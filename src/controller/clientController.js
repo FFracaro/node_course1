@@ -19,14 +19,18 @@ function findAllClients(req, res)
     })
 }
 
-function deleteClient(req, res) {
-    clientDao.deleteClient(req.params.id)
+async function deleteClient(req, res) {
+    let client = await clientDao.findClientByID(req.params.id)
+
+    clientDao.deleteClient(req.params.id, client.addressId)
         .then(() => res.redirect('/client?msg=5'))
         .catch((err) => res.redirect('/client?msg=6'))
 }
 
-function updateClient(req, res) {
-    clientDao.updateClient(req.body, req.params.id)
+async function updateClient(req, res) {
+    let client = await clientDao.findClientByID(req.params.id)
+
+    clientDao.updateClient(req.body, req.params.id, client.addressId)
         .then(() => res.redirect('/client?msg=3'))
         .catch((err) => res.redirect('/client?msg=4')) 
 }

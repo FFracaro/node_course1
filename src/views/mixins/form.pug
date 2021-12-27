@@ -50,4 +50,24 @@ mixin form(client)
             value=(!client) ? "":client.telefonemovel
         )
     .form-group
+        label(for='cepClient') CEP
+        input.form-control(
+            type="text",
+            name="cep",
+            id="cep",
+            placeholder="Digite o número do seu CEP",
+            required,
+            value=(!client) ? "":client.address.cep
+        )
+    .form-group
+        label(for='complementoClient') Complemento
+        input.form-control(
+            type="text",
+            name="complemento",
+            id="complemento",
+            placeholder="Digite o complemento do endereço",
+            required,
+            value=(!client) ? "":client.address.complemento
+        )
+    .form-group
         button.btn.btn-sucess.col-md-12(type="submit") Cadastrar

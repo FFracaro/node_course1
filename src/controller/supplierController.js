@@ -19,14 +19,18 @@ function findAllSuppliers(req, res)
     })
 }
 
-function deleteSupplier(req, res) {
-    supplierDao.deleteSupplier(req.params.id)
+async function deleteSupplier(req, res) {
+    let supplier = await supplierDao.findSupplierByID(req.params.id)
+
+    supplierDao.deleteSupplier(req.params.id, supplier.addressId)
         .then(() => res.redirect('/supplier?msg=5'))
         .catch((err) => res.redirect('/supplier?msg=6'))
 }
 
-function updateSupplier(req, res) {
-    supplierDao.updateSupplier(req.body, req.params.id)
+async function updateSupplier(req, res) {
+    let supplier = await supplierDao.findSupplierByID(req.params.id)
+
+    supplierDao.updateSupplier(req.body, req.params.id, supplier.addressId)
         .then(() => res.redirect('/supplier?msg=3'))
         .catch((err) => res.redirect('/supplier?msg=4')) 
 }

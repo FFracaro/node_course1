@@ -24,6 +24,8 @@ block content
 					th E-mail 
 					th Telefone Fixo 
 					th Telefone Móvel 
+					th CEP
+					th Complemento
 					th Ações 
 			tbody 
 				each client in clients 
@@ -33,6 +35,8 @@ block content
 						td= client.email 
 						td= client.telefonefixo 
 						td= client.telefonemovel 
+						td= client.address.cep 
+						td= client.address.complemento
 						td 
 							a(href="/client/edit/" + client.id, class="btn btn-info") Editar
 							form(method="POST",
